@@ -31,6 +31,22 @@ btnCheck.addEventListener("click", function () {
       scoreSelector.textContent = highScore;
     }
 
+    //when guess is wrong
+  } else if (guess !== secretNumber) {
+    if (score > 1) {
+      //if we did not lose yet then keep playing
+      message.textContent = guess > secretNumber ? "lower!" : "higher!"; //refactoring. if guess is different then secretnumber then do this. then in here we say if guess is great then secretnumber then lower but if not then higher
+      score--; //goes 1 score down. from 20 to 19 for example
+      scoreDom.textContent = score; //our score gets updated in the dom.
+    } else {
+      //if we did lose, well, youve lost the game! scoredom.textcontent = 0 is just to get it to stay at 0
+      message.textContent = "youve lost the game!";
+      scoreDom.textContent = "0";
+    }
+  }
+});
+
+/*
     //when guess is too high
   } else if (guess > secretNumber) {
     if (score > 1) {
@@ -56,7 +72,7 @@ btnCheck.addEventListener("click", function () {
       scoreDom.textContent = "0";
     }
   }
-});
+});*/
 
 btnPlayAgain.addEventListener("click", function () {
   scoreDom.textContent = "20";
